@@ -1,5 +1,7 @@
 # Test Cases and Results
 
+SQLite update (6 October 2026): **109 checks passed** — 36 banking, 56 website integration (now backed by SQLite), 8 file-encryption compatibility, and 9 SQLite checks. SQLite-specific verification covers legacy import, retained backup, restart balances/history/cards, encrypted payloads, stale-writer protection, database integrity, and tampered-record rejection. Docker engine was unavailable locally, so the image build/runtime remains unverified.
+
 Latest verification after login implementation: **100 automated checks passed** (36 banking, 56 HTTP, 8 encryption). New integration coverage verifies anonymous redirects, incorrect/correct admin credentials, customer login, logout and old-form rejection, absence of other customer/admin data in customer HTML, cross-customer history/transaction rejection, Admin-only route enforcement, and successful own-account transactions.
 
 Verified on 5 October 2026, Windows, JDK 27. Command: `./test.ps1`.

@@ -1,5 +1,7 @@
 # User Manual
 
+SQLite update: run.ps1/run.bat now download the SQLite driver once and run with it on the classpath. The active database is data/bank.db; existing data/bank.dat is imported automatically only when the database is first initialized. Back up the database while stopped AND its encryption keys. See RENDER.md for Render deployment and updated runtime commands; earlier file-only commands below are superseded.
+
 ## Login and access
 
 The website now opens at `/login`. Customers enter their full name and 12-digit card number; names are matched without case sensitivity. Customer pages contain only their own accounts, balances, and history. Transfers to another customer require the recipient's full name, card number, and account number. These are entered manually so the site does not expose a customer directory.

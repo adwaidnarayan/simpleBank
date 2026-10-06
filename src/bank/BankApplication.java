@@ -19,8 +19,9 @@ public final class BankApplication {
     public static void main(String[] args) throws Exception {
         int port = Integer.parseInt(args.length > 0 ? args[0] : System.getenv().getOrDefault("PORT", "8080"));
         String host = System.getenv().getOrDefault("BANK_HOST", "127.0.0.1");
-        Path data = Path.of(args.length > 1 ? args[1] : System.getenv().getOrDefault("BANK_DATA_FILE", "data/bank.dat"));
-        BankApplication app = new BankApplication(new BankSystem(new FileBankRepository(data)));
+        Path data = Path.of(args.length > 1 ? args[1] : System.getenv().getOrDefault("BANK_DB_PATH", "data/bank.db"));
+        Path legacy = args.length > 1 ? null : Path.of(System.getenv().getOrDefault("BANK_DATA_FILE", "data/bank.dat"));
+        BankApplication app = new BankApplication(new BankSystem(new SqliteBankRepository(data, legacy)));
         String tlsStore = System.getProperty("bank.tls.keystore");
         HttpServer server;
         if (tlsStore != null) {
