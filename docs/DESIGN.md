@@ -1,5 +1,7 @@
 # Design Document: Simple Banking System
 
+Storage update: SqliteBankRepository is now the application's BankRepository implementation. It uses SQLite JDBC and a bank_state table with singleton ID, revision, encrypted payload, and update timestamp. A database transaction commits all banking state together; optimistic revision matching rejects stale writers. Payloads retain AES-256-GCM protection. FileBankRepository remains for one-time legacy import and recovery. See RENDER.md for deployment details. Earlier file-storage descriptions below describe the compatibility repository.
+
 ## 1. Objective and scope
 
 Implement the assigned basic banking operations using object-oriented Java and a simple website. The system maintains customers, associated accounts, minimum balances, and durable transaction logs. A single operator uses the website on the same computer. All monetary values use INR, and history dates are displayed in Indian Standard Time.
